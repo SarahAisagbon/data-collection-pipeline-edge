@@ -10,8 +10,8 @@ ENV PYTHONUNBUFFERED=1
 EXPOSE 5000
 
 # Update the system and install necessary packages
-RUN apt-get update && echo "Update completed"
-RUN apt-get install -y wget curl gnupg libssl1.1 && echo "Installation completed"
+RUN apt-get update && \
+    apt-get install -y wget curl gnupg libssl-dev
 
 # Install Edge
 RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /etc/apt/trusted.gpg.d/microsoft.gpg && \
@@ -36,3 +36,4 @@ RUN python -m pip install -r requirements.txt
 
 # During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
 CMD ["python", "Project/Webscraping_GC.py"]
+
