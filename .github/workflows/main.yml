@@ -3,7 +3,7 @@ name: Push Docker Image
 on:
   push:
     branches: 
-      - 'main'
+      - 'remote'
       
 jobs:
   build:
