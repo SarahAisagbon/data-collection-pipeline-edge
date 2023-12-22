@@ -29,6 +29,7 @@ RUN python -m pip install -r requirements.txt
 
 # Set the PATH to include the directory with the EdgeDriver executable
 ENV PATH="/app:${PATH}"
+ENV PATH="C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe:${PATH}"
 
 # During debugging, this entry point will be overridden.
 CMD ["python", "Project/Webscraping.py"]

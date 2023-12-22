@@ -1,9 +1,9 @@
 import unittest
 import sys
 # tell interpreter where to look
-sys.path.insert(0,"/Users/sarahaisagbon/Documents/GitHub/data-collection-pipeline")
+sys.path.insert(0,r"C:\Users\Sarah Aisagbon\selenium-edge-scraper")
 from Project import Webscraping
-from Project.Webscraping_GC import Scraper
+from Project.Webscraping import Scraper
 from selenium import webdriver
 from selenium.webdriver.firefox.service import Service
 
@@ -80,7 +80,7 @@ class ScraperTestCase(unittest.TestCase):
         random_curr = self.currency_list[self.random_index]
         random_curr = random_curr.replace("/","")
         imagefilename = time.strftime('%d%m%Y_%H%M%S')
-        path =  "/Users/sarahaisagbon/Documents/GitHub/data-collection-pipeline/raw_data"
+        path =  r"C:\Users\Sarah Aisagbon\selenium-edge-scraper\raw_data"
         path_1 = path + "/" + random_curr
         path_2 = path_1 +  "/data.json"
         path_3 = path_1 + "/images/"

@@ -43,6 +43,7 @@ class Scraper:
         self.currency_list = currency_list
         self.URL = URL
         options = webdriver.EdgeOptions()
+        options.binary_location = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
         options.add_argument("--no-sandbox") #Bypass OS security model
         
         options.add_argument("--headless")
@@ -50,6 +51,7 @@ class Scraper:
         options.add_argument('--disable-extensions') #disabling extensions
         options.add_argument("--disable-dev-shm-usage") #overcome limited resource problems
         options.add_argument('--disable-gpu')
+        
         
         self.service= EdgeService(EdgeChromiumDriverManager().install())
         self.driver = webdriver.Edge(options=options, service=self.service)
@@ -234,7 +236,7 @@ class Scraper:
         try:
             # Convert the image into a bit stream, then save it.
             image_file = io.BytesIO(image_content)
-            image = Image.open(image_file).convert("RGBA")
+            image = Image.open(image_file).convert("RGB")
             with open(path, "wb") as f:
                 image.save(f, "JPEG", quality=100)
             
@@ -321,7 +323,6 @@ class Scraper:
         self.__check_if_file_exists(str(image_file_path))
         
         #Download and save the image in the file created above
-        
         img = self.__download_image(image_scr, image_file_path)
     
     def download_all_data(self, currency_dict, link, path):
@@ -334,7 +335,7 @@ class Scraper:
         scrape.get_list_of_currency_links(currency_list)
         for link in self.currency_link_list:
             index = self.currency_link_list.index(link)
-            path = "C:\\Users\\Sarah Aisagbon\\selenium-edge-scraper\\Project\\raw_data"
+            path = "C:\\Users\\Sarah Aisagbon\\selenium-edge-scraper\\raw_data"
             currency_dict = self.create_currency_dictionary(link)
             # create a json file named after the id
             self.download_all_data(currency_dict, link, path)
